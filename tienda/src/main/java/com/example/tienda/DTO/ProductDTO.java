@@ -1,32 +1,21 @@
-package com.example.tienda.Models;
+package com.example.tienda.DTO;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
 
-@Entity
-@Table(name="Product")
-public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class ProductDTO {
     private Long id;
-
-    @Column(name = "name")
     private String name;
-
-    @Column(name = "description")
     private String description;
-
-    @Column(name = "quantity")
     private Integer quantity;
 
-    public Product(Long id, String name, String description, Integer quantity) {
+    public ProductDTO(Long id, String name, String description, Integer quantity) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.quantity = quantity;
     }
 
-    public Product(){
-
+    public ProductDTO() {
     }
 
     public Long getId() {
