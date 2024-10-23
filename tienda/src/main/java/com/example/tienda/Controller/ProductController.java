@@ -1,14 +1,14 @@
 package com.example.tienda.Controller;
 
 import com.example.tienda.DTO.ProductDTO;
+import com.example.tienda.Models.Product;
 import com.example.tienda.Services.ProductService;
 import com.example.tienda.Services.ProductServiceImpl;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 @CrossOrigin
 @RestController
 public class ProductController {
@@ -20,4 +20,26 @@ public class ProductController {
         ProductDTO createdProduct = productService.createProduct(productdto);
         return ResponseEntity.ok(createdProduct);
     }
+
+    @GetMapping("/product/{id}")
+    public ResponseEntity<?> getProduct(@PathVariable Long id){
+        return ResponseEntity.ok(productService.getProduct(id));
+    }
+
+    @GetMapping("/product/all")
+    public ResponseEntity<?> getAllProducts(){
+        return ResponseEntity.ok(productService.getAllProducts());
+    }
+    @DeleteMapping("/product")
+    public ResponseEntity<?> deleteProduct(@PathVariable Long id){
+        productService.deleteProduct(id);
+        return ResponseEntity.ok(null);
+    }
+
+    @PatchMapping("/product")
+    public ResponseEntity<?> updateProduct(@RequestBody ProductDTO productdto){
+        return ResponseEntity.ok(productService.updateProduct(productdto));
+    }
+
+
 }
