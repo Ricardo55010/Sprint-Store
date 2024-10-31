@@ -4,6 +4,7 @@ import com.example.tienda.DTO.ProductDTO;
 import com.example.tienda.Models.Product;
 import com.example.tienda.Services.ProductService;
 import com.example.tienda.Services.ProductServiceImpl;
+import com.microsoft.demo.Demo;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -40,6 +41,11 @@ public class ProductController {
     public ResponseEntity<?> updateProduct(@RequestBody ProductDTO productdto){
         return ResponseEntity.ok(productService.updateProduct(productdto));
     }
-
+    @GetMapping("/saludo/{saludo}")
+    public ResponseEntity<?> getSaludo(@PathVariable String saludo){
+        Demo demo = new Demo();
+        demo.DoSomething(true);
+        return ResponseEntity.ok("Si");
+    }
 
 }

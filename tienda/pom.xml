@@ -49,8 +49,27 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>helloworld</groupId>
+			<artifactId>helloworld</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
-
+	<profiles>
+	<profile>
+	<id>azure_artifacts</id>
+	<repositories>
+	<repository>
+		<id>devops</id>
+		<url>https://pkgs.dev.azure.com/richimari2011/Devops/_packaging/devops/maven/v1</url>
+		<releases>
+			<enabled>true</enabled>
+		</releases>
+		<snapshots>
+			<enabled>true</enabled>
+		</snapshots>
+	</repository>
+	</repositories>
 	<build>
 		<plugins>
 			<plugin>
@@ -59,5 +78,6 @@
 			</plugin>
 		</plugins>
 	</build>
-
+	</profile>
+	</profiles>
 </project>
